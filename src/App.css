@@ -1,0 +1,166 @@
+@font-face {
+  font-family: bebas-kai;
+  src: url(/public/fonts/BebasKai.ttf);
+}
+
+.container__site {
+  display: flex;
+  min-height: 80vh;
+  flex-direction: column;
+}
+
+.image__home--background {
+  background-image: url(/public/images/bergen_bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 800px;
+}
+
+.container__home {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.container__home--logo {
+  backdrop-filter: blur(5px);
+  height: 500px;
+  width: 600px;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  padding: 15px;
+}
+
+.container__home--pictures {
+  display: block;
+  margin: 20px auto;
+  font-family: "bebas-kai", sans-serif;
+  width: 800px;
+  height: 800px;
+}
+
+.container__home--pictures p {
+  backdrop-filter: blur(5px);
+  color: #fff;
+}
+
+.container__home--pictures img {
+  height: 600px;
+  width: auto;
+}
+
+.container__contact {
+  display: flex;
+  flex-direction: row;
+}
+
+.container__cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.container__hotel--details {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.card__hotel {
+  width: 250px;
+  box-shadow: 0px 3px 6px rgb(65, 65, 65);
+  padding: 10px;
+  margin: 20px;
+}
+
+.hotel__price {
+  font-family: "bebas-kai", sans-serif;
+}
+
+.hotel__details--description {
+  width: 600px;
+}
+
+.hotel__details--image {
+  width: 600px;
+}
+
+.card__hotel--button p {
+  width: 100%;
+  padding: 10px;
+  background-color: #779e46;
+  font-family: "bebas-kai", sans-serif;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.image__contact {
+  width: 400px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.button__home--book {
+  display: block;
+  margin: 0 auto;
+  background-color: #779e46;
+  padding: 15px 30px 15px 30px;
+  font-family: "bebas-kai", sans-serif;
+  font-size: 1.5rem;
+  box-shadow: 0px 3px 6px rgb(65, 65, 65);
+  color: #000;
+  width: 200px;
+  text-decoration: none;
+}
+
+.button__home--book:hover {
+  color: #fff;
+}
+
+.button__form--contact {
+  margin-top: 30px;
+}
+
+.image__home--logo {
+  width: 400px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+h1,
+h2 {
+  font-family: "bebas-kai", sans-serif;
+}
+
+p {
+  color: #000;
+  padding: 20px;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
+.container__form {
+  width: 600px;
+}
+
+.container__footer {
+  background: #2e3361;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.container__footer--icon img {
+  display: block;
+  margin: 0 auto;
+  padding: 20px;
+}
