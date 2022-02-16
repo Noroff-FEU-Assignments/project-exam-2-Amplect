@@ -7,7 +7,7 @@ import * as yup from "yup";
 import axios from "axios";
 import { BASE_URL, API_URL } from "../../../constants/api";
 
-const url = BASE_URL + "/auth/local";
+const url = BASE_URL + "/api/auth/local";
 
 const schema = yup.object().shape({
   identifier: yup
@@ -43,7 +43,8 @@ function LoginForm() {
     // console.log(loginData);
 
     try {
-      await axios.post(url, data);
+      const response = await axios.post(url, data);
+      console.log("response", response.data);
       navigate("/admin");
     } catch (error) {
       console.log("Error", error);

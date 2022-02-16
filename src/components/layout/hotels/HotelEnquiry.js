@@ -4,7 +4,66 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { API_URL } from "../../../constants/api";
 import { Form, Button } from "react-bootstrap";
 
+function useLocalStorage(key, initialValue) {
+  const [storedEnquiry, setStoredEnquiry] = useState(() => {
+    if (typeof window === "undefined") {
+      return initialValue;
+    }
+
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.log(error);
+      return initialValue;
+    }
+  });
+
+  const setEnquiry = (enquiry) => {
+    try {
+      let enquiryData = [];
+      const enquiryToStore =
+        enquiry instanceof Function ? enquiry(storedEnquiry) : enquiry;
+      setStoredEnquiry(enquiryToStore);
+      if (typeof window !== "undefined") {
+        enquiryData.push(enquiryToStore);
+        localStorage.setItem("enquiry", JSON.stringify(enquiryData));
+        window.localStorage.setItem(key, JSON.stringify(enquiryToStore));
+      }
+      if (localStorage.getItem("enquiry")) {
+        this.setEnquiry({
+          hotel: enquiry.hotelName,
+          name: enquiry.name,
+          email: enquiry.email,
+          doa: enquiry.doa,
+          dod: enquiry.dod,
+          comment: enquiry.comment,
+        });
+      } else {
+        this.setEnquiry({
+          hotel: "",
+          name: "",
+          email: "",
+          doa: "",
+          dod: "",
+          comment: "",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return [storedEnquiry, setEnquiry];
+}
+
 export default function HotelEnquiry() {
+  const [hotelName, setHotelName] = useLocalStorage("hotel", "");
+  const [name, setName] = useLocalStorage("name", "");
+  const [email, setEmail] = useLocalStorage("email", "");
+  const [doa, setDoa] = useLocalStorage("doa", "");
+  const [dod, setDod] = useLocalStorage("dod", "");
+  const [comment, setComment] = useLocalStorage("comment", "");
   const [hotel, setHotel] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -54,11 +113,27 @@ export default function HotelEnquiry() {
     <>
       <Heading title={`Enquiry about ${hotel.attributes.name}`} />
       <Form className="container__form">
-        <Form.Group className="mb-3" controlId="name">
+        <Form.Control
+          type="text"
+          placeholder={hotel.attributes.name}
+          value={hotel.attributes.name}
+          onChange={(e) => setHotelName(e.target.value)}
+        />
+        <Form.Group
+          className="mb-3"
+          controlId="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        >
           <Form.Label>Name</Form.Label>
           <Form.Control type="text" placeholder="Enter your name" />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="email">
+        <Form.Group
+          className="mb-3"
+          controlId="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        >
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" placeholder="Enter email" />
           <Form.Text className="text-muted">
@@ -66,7 +141,12 @@ export default function HotelEnquiry() {
           </Form.Text>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="doa">
+        <Form.Group
+          className="mb-3"
+          controlId="doa"
+          value={doa}
+          onChange={(e) => setDoa(e.target.value)}
+        >
           <Form.Label>Date of arrival</Form.Label>
           <Form.Control
             type="text"
@@ -74,7 +154,12 @@ export default function HotelEnquiry() {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="dod">
+        <Form.Group
+          className="mb-3"
+          controlId="dod"
+          value={dod}
+          onChange={(e) => setDod(e.target.value)}
+        >
           <Form.Label>Date of departure</Form.Label>
           <Form.Control
             type="text"
@@ -88,6 +173,8 @@ export default function HotelEnquiry() {
             as="textarea"
             controlId="comment"
             placeholder="(Example: non-carpet floors)"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
           />
         </Form.Group>
         <Button

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { API_URL } from "../../../constants/api";
+import { API_URL, BASE_URL } from "../../../constants/api";
 
 function HotelsList() {
   const [hotels, setHotels] = useState([]);
@@ -43,14 +43,16 @@ function HotelsList() {
   return (
     <div className="container__cards">
       {hotels.map(function (hotel) {
-        console.log(hotel.attributes.image);
-        const imageData = hotel.attributes.image;
+        // const imageUrl = {hotel.attributes.image.data.attributes.url};
+        // console.log(imageUrl);
+
+        // const imageUrl = BASE_URL + {hotel.attributes.image.data.attributes.url};
 
         return (
           <div key={hotel.id} className="card__hotel">
             <img
-              src="${hotel.attributes.image.data.attributes.url}"
-              alt="Hotel room image"
+              src="{BASE_URL}
+              {hotel.attributes.image.data.attributes.url}"
             ></img>
             <h2>{hotel.attributes.name}</h2>
             <p className="hotel__price">From ${hotel.attributes.price}/night</p>

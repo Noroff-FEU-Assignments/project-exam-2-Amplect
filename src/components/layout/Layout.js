@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Home from "./home/Home";
 import Hotels from "./hotels/Hotels";
-import Contact from "./contact/Contact";
+import Contact from "./contact/Contact.component";
 import Login from "./login/Login";
 import HotelDetail from "./hotels/HotelDetail";
 import HotelEnquiry from "./hotels/HotelEnquiry";

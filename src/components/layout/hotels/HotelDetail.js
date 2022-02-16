@@ -16,7 +16,7 @@ export default function HotelDetail() {
     navigate.push("/hotels");
   }
 
-  const url = API_URL + "/" + id;
+  const url = API_URL + "/" + id + "?populate=image";
 
   useEffect(function () {
     async function fetchDetails() {

@@ -57,6 +57,12 @@
   flex-direction: row;
 }
 
+@media screen and (max-width: 900px) {
+  .container__contact {
+    flex-direction: column;
+  }
+}
+
 .container__cards {
   display: flex;
   flex-direction: row;
@@ -157,10 +163,33 @@ a:-webkit-any-link {
   background: #2e3361;
   width: 100%;
   margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .container__footer--icon img {
   display: block;
   margin: 0 auto;
   padding: 20px;
+}
+
+.container__footer--links {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  text-align: center;
+  width: 600px;
+  padding: 30px;
+}
+
+.container__footer--links a {
+  color: #fff;
+  font-family: "bebas-kai", sans-serif;
+  font-size: 1.5rem;
+  padding: 20px;
+}
+
+.footer__icons {
+  margin: 20px auto;
 }
