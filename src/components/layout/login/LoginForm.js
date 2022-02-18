@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -66,7 +66,11 @@ function LoginForm() {
         />
       </Form.Group> */}
       <label>Email</label>
-      <input name="identifier" {...register("identifier")} />
+      <input
+        className="form__login--input"
+        name="identifier"
+        {...register("identifier")}
+      />
       {errors.emaul && <span className="error">{errors.email.message}</span>}
 
       {/* <Form.Group className="mb-3" controlId="password">
@@ -79,12 +83,19 @@ function LoginForm() {
       </Form.Group> */}
 
       <label>Password</label>
-      <input name="password" {...register("password")} type="password" />
+      <input
+        className="form__login--input"
+        name="password"
+        {...register("password")}
+        type="password"
+      />
       {errors.password && (
         <span className="error">{errors.password.message}</span>
       )}
 
-      <button>{submitting ? "Logging in..." : "Log in"}</button>
+      <Button className="button__form button__form--login">
+        {submitting ? "Logging in..." : "Log in"}
+      </Button>
     </Form>
   );
 }

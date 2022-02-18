@@ -101,18 +101,20 @@ export default class Contact extends Component {
             <Button
               // onclick={storeContact()}
               onSubmit={this.onSubmit}
-              className="button__form--contact"
+              className="button__form"
               variant="primary"
               type="submit"
             >
               Submit
             </Button>
           </Form>
-          <img
-            className="image__contact"
-            src="/images/bergen_winter.jpg"
-            alt="Bergen by winter."
-          ></img>
+          <div className="container__image--contact">
+            <img
+              className="image__contact"
+              src="/images/bergen_winter.jpg"
+              alt="Bergen by winter."
+            ></img>
+          </div>
         </div>
       </>
     );

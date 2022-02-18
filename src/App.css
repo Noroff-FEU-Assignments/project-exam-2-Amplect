@@ -18,6 +18,12 @@
   height: 800px;
 }
 
+.image__home--icon img {
+  max-width: 200px;
+  max-height: 200px;
+  margin: 0 auto;
+}
+
 .container__home {
   display: flex;
   flex-direction: column;
@@ -32,6 +38,13 @@
   margin: 20px auto;
   text-align: center;
   padding: 15px;
+}
+
+@media screen and (max-width: 900px) {
+  .container__home--logo {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .container__home--pictures {
@@ -50,6 +63,13 @@
 .container__home--pictures img {
   height: 600px;
   width: auto;
+}
+
+@media screen and (max-width: 900px) {
+  .container__home--pictures {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .container__contact {
@@ -106,11 +126,24 @@
   color: #000;
 }
 
+.container__image--contact {
+  width: 100%;
+  height: auto;
+}
+
 .image__contact {
-  width: 400px;
+  max-width: 400px;
   height: auto;
   display: block;
   margin: 0 auto;
+  padding-top: 20px;
+}
+
+@media screen and(max-width: 900px) {
+  .container__image--contact img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .button__home--book {
@@ -130,7 +163,7 @@
   color: #fff;
 }
 
-.button__form--contact {
+.button__form {
   margin-top: 30px;
 }
 
@@ -144,6 +177,7 @@
 h1,
 h2 {
   font-family: "bebas-kai", sans-serif;
+  padding-top: 20px;
 }
 
 p {
@@ -156,7 +190,19 @@ a:-webkit-any-link {
 }
 
 .container__form {
-  width: 600px;
+  max-width: 600px;
+}
+
+@media screen and (max-width: 900px) {
+  .container__form {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.form__login--input {
+  width: 100%;
+  display: block;
 }
 
 .container__footer {
@@ -166,6 +212,14 @@ a:-webkit-any-link {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+@media screen and (max-width: 900px) {
+  .container__footer {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .container__footer--icon img {
@@ -181,6 +235,14 @@ a:-webkit-any-link {
   text-align: center;
   width: 600px;
   padding: 30px;
+}
+
+@media screen and (max-width: 900px) {
+  .container__footer--links {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .container__footer--links a {

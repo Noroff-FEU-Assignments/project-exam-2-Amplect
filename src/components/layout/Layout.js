@@ -21,6 +21,7 @@ import {
   Button,
 } from "react-bootstrap";
 import Footer from "../Footer";
+import Search from "../Search/Search.component";
 
 function Layout() {
   return (
@@ -50,15 +51,9 @@ function Layout() {
                 <Nav.Link href="#link">Log in</Nav.Link>
               </NavLink>
             </Nav>
-            <Form className="d-flex">
-              <FormControl
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form>
+            <div className="d-flex">
+              <Search />
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>
