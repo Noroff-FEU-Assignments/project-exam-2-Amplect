@@ -93,9 +93,9 @@ function LoginForm() {
         <span className="error">{errors.password.message}</span>
       )}
 
-      <Button className="button__form button__form--login">
+      <button className="button__form button__form--login">
         {submitting ? "Logging in..." : "Log in"}
-      </Button>
+      </button>
     </Form>
   );
 }

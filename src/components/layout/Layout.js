@@ -21,7 +21,7 @@ import {
   Button,
 } from "react-bootstrap";
 import Footer from "../Footer";
-import Search from "../Search/Search.component";
+import Search from "./search/Search.component";
 
 function Layout() {
   return (
