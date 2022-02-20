@@ -19,14 +19,16 @@ export default function Home() {
           </div>
         </div>
 
-        <Heading title="Welcome to Holidaze" />
-        <div className="image__home--icon">
-          <img src="/images/icon.png" alt="Holidaze logo icon" />
+        <div className="container__home--welcome">
+          <Heading title="Welcome to Holidaze" />
+          <div className="image__home--icon">
+            <img src="/images/icon.png" alt="Holidaze logo icon" />
+          </div>
+          <p>
+            Where you can find the perfect accommodation alternative for{" "}
+            <i>your</i> needs.
+          </p>
         </div>
-        <p>
-          Where you can find the perfect accommodation alternative for{" "}
-          <i>your</i> needs.
-        </p>
 
         <div className="container__home--pictures">
           <h2>Pictures from visitors:</h2>

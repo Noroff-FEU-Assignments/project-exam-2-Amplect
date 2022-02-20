@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
-import { BASE_URL, API_URL } from "../../../constants/api";
+import { BASE_URL } from "../../../constants/api";
+import AuthContext from "../../../context/AuthContext";
 
-const url = BASE_URL + "/api/auth/local";
+const url = BASE_URL + "/auth/local";
 
 const schema = yup.object().shape({
   identifier: yup
@@ -29,22 +30,18 @@ function LoginForm() {
     resolver: yupResolver(schema),
   });
 
+  const [, setAuth] = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   async function onSubmit(data) {
     setSubmitting(true);
     setLoginError(null);
 
-    // const { loginData } = await axios.post(API_URL, {
-    //   identifier: "admin@admin.com",
-    //   password: "Password123",
-    // });
-
-    // console.log(loginData);
-
     try {
       const response = await axios.post(url, data);
       console.log("response", response.data);
+      setAuth(response.data);
       navigate("/admin");
     } catch (error) {
       console.log("Error", error);
@@ -57,34 +54,18 @@ function LoginForm() {
   return (
     <Form className="container__form" onSubmit={handleSubmit(onSubmit)}>
       {loginError && <span className="error">{loginError}</span>}
-      {/* <Form.Group className="mb-3" controlId="identifier">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="Enter email"
-          {...register("identifier")}
-        />
-      </Form.Group> */}
+
       <label>Email</label>
       <input
-        className="form__login--input"
+        className="form__input form__input--login"
         name="identifier"
         {...register("identifier")}
       />
       {errors.emaul && <span className="error">{errors.email.message}</span>}
 
-      {/* <Form.Group className="mb-3" controlId="password">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Enter your password"
-          {...register("password")}
-        />
-      </Form.Group> */}
-
       <label>Password</label>
       <input
-        className="form__login--input"
+        className="form__input form__input--login"
         name="password"
         {...register("password")}
         type="password"

@@ -3,10 +3,30 @@
   src: url(/public/fonts/BebasKai.ttf);
 }
 
+body {
+  background-color: #f0f0f0 !important;
+}
+
 .container__site {
   display: flex;
   min-height: 80vh;
   flex-direction: column;
+}
+
+.nav__search--input {
+  padding: 5px;
+  margin-top: 40px;
+  margin-right: 30px;
+  width: 200px;
+  border: 1px solid #2e3361;
+}
+
+.nav__search--suggestions a {
+  display: block;
+  width: 200px;
+  background-color: #fff;
+  margin-left: -32px;
+  border-bottom: 1px solid #2e3361;
 }
 
 .image__home--background {
@@ -45,6 +65,12 @@
     width: 100%;
     height: auto;
   }
+}
+
+.container__home--welcome {
+  text-align: center;
+  background-color: #779e46;
+  width: 100%;
 }
 
 .container__home--pictures {
@@ -92,27 +118,60 @@
 
 .container__hotel--details {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
 }
 
-.card__hotel {
-  width: 250px;
-  box-shadow: 0px 3px 6px rgb(65, 65, 65);
-  padding: 10px;
+.hotels__info {
+  background-color: #2e3361;
+  width: 100%;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.hotels__info--content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hotels__info--content img {
+  max-width: 550px;
+  height: auto;
   margin: 20px;
 }
 
-.hotel__price {
-  font-family: "bebas-kai", sans-serif;
+.info__paragraphs {
+  max-width: 500px;
 }
 
-.hotel__details--description {
-  width: 600px;
+.info__paragraphs p {
+  color: #fff;
 }
 
-.hotel__details--image {
-  width: 600px;
+@media screen and (max-width: 900px) {
+  .hotels__info {
+    text-align: center;
+  }
+
+  .info__paragraphs {
+    margin: 0 auto;
+  }
+
+  .hotels__info--content img {
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+}
+
+.card__hotel {
+  flex-grow: 1;
+  max-width: 300px;
+  height: 425px;
+  box-shadow: 0px 3px 10px rgb(92, 92, 92);
+  margin: 20px auto;
+  position: relative;
 }
 
 .card__hotel--button p {
@@ -124,6 +183,61 @@
   text-align: center;
   font-size: 1.5rem;
   color: #000;
+  position: absolute;
+  left: 0;
+  top: 350px;
+  bottom: -16px;
+}
+
+.card__hotel--button p:hover {
+  cursor: pointer;
+  background-color: #a4eb49;
+}
+
+.card__image {
+  width: 100%;
+  height: auto;
+}
+
+.hotel__price {
+  font-family: "bebas-kai", sans-serif;
+  font-size: 1.5rem;
+}
+
+.hotel__details--description {
+  width: 600px;
+}
+
+.hotel__details--price {
+  font-family: "bebas-kai", sans-serif;
+  font-size: 2rem;
+}
+
+.hotel__details--button {
+  width: 100%;
+  padding: 5px;
+  background-color: #779e46;
+  font-family: "bebas-kai", sans-serif;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.hotel__details--button:hover {
+  cursor: pointer;
+  background-color: #a4eb49;
+}
+
+.hotel__details--image {
+  max-width: 600px;
+}
+
+@media screen and (max-width: 900px) {
+  .hotel__details--image {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .container__image--contact {
@@ -165,6 +279,19 @@
 
 .button__form {
   margin-top: 30px;
+  border: none;
+  padding: 10px 40px 10px 40px;
+  font-family: "bebas-kai", sans-serif;
+  font-size: 1.5rem;
+}
+
+.button__form--login {
+  background-color: #2e3361;
+  color: #fff;
+}
+
+.button__form--add {
+  background-color: #779e46;
 }
 
 .image__home--logo {
@@ -180,6 +307,10 @@ h2 {
   padding-top: 20px;
 }
 
+h2 {
+  padding-left: 20px;
+}
+
 p {
   color: #000;
   padding: 20px;
@@ -187,6 +318,8 @@ p {
 
 a:-webkit-any-link {
   text-decoration: none;
+  font-family: "bebas-kai", sans-serif;
+  font-size: 1.5rem;
 }
 
 .container__form {
@@ -200,9 +333,59 @@ a:-webkit-any-link {
   }
 }
 
-.form__login--input {
+.form__input {
   width: 100%;
   display: block;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.form__input--login {
+  border: 1px solid #2e3361;
+}
+
+.form__input--add {
+  border: 1px solid #779e46;
+}
+
+label {
+  font-family: "bebas-kai", sans-serif;
+  margin-top: 20px;
+}
+
+.admin__content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.admin__contact--info {
+  background-color: #2e3361;
+  width: 400px;
+  color: #fff;
+  margin: 20px;
+}
+
+.admin__contact--info p {
+  color: #fff;
+}
+
+.admin__enquiry--info {
+  background-color: #779e46;
+  width: 400px;
+  margin: 20px;
+}
+
+.admin__text p {
+  margin-top: -30px;
+}
+
+.admin__button {
+  margin-top: 30px;
+  width: 100%;
+  height: 75px;
+  text-align: center;
+  background-color: #779e46;
 }
 
 .container__footer {
@@ -214,7 +397,7 @@ a:-webkit-any-link {
   flex-wrap: wrap;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1100px) {
   .container__footer {
     flex-direction: column;
     width: 100%;

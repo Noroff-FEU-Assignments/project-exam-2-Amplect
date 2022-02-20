@@ -1,7 +1,7 @@
 import Heading from "../Heading";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { API_URL } from "../../../constants/api";
+import { API_URL, BASE_URL } from "../../../constants/api";
 
 export default function HotelDetail() {
   const [hotel, setHotel] = useState([]);
@@ -16,7 +16,7 @@ export default function HotelDetail() {
     navigate.push("/hotels");
   }
 
-  const url = API_URL + "/" + id + "?populate=image";
+  const url = API_URL + "/" + id;
 
   useEffect(function () {
     async function fetchDetails() {
@@ -25,10 +25,9 @@ export default function HotelDetail() {
 
         if (response.ok) {
           const json = await response.json();
-          const details = json.data;
-          console.log(details);
+          console.log(json);
 
-          setHotel(details);
+          setHotel(json);
         } else {
           setError("An error occurred while fetching this hotel...");
         }
@@ -51,20 +50,19 @@ export default function HotelDetail() {
 
   return (
     <>
-      <Heading title={hotel.attributes.name} />
+      <Heading title={hotel.name} />
 
       <div className="container__hotel--details">
-        <p className="hotel__details--description">
-          {hotel.attributes.description}
-        </p>
+        <p className="hotel__details--description">{hotel.description}</p>
+
         <img
           className="hotel__details--image"
-          src="{hotel.attributes.image.url}"
+          src={hotel.image[0].url}
           alt="Hotel room image"
         ></img>
       </div>
-      <p className="hotel__price">From ${hotel.attributes.price}/night</p>
-      <div className="card__hotel--button">
+      <p className="hotel__details--price">From ${hotel.price}/night</p>
+      <div className="hotel__details--button">
         <Link to={`/hotels/${hotel.id}/enquiry`}>
           <p>Ask about a room</p>
         </Link>

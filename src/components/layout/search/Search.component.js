@@ -6,12 +6,13 @@ import Suggestions from "./Suggestions";
 class Search extends Component {
   state = {
     query: "",
+    results: [],
   };
 
   getHotels = () => {
     axios.get(`${API_URL}`).then(({ data }) => {
       this.setState({
-        results: data.data,
+        results: data,
       });
       console.log(this.state.results);
     });
@@ -36,20 +37,16 @@ class Search extends Component {
   render() {
     return (
       <form>
-        {/* {results.map(function (hotel) {
-          return ( */}
         <>
           <input
+            className="nav__search--input"
             placeholder="Search hotels"
             ref={(input) => (this.search = input)}
             onChange={this.handleInputChange}
           />
-          <p>{this.state.results}</p>
-          {/* <p key={hotel.id}>{hotel.attributes.name}</p> */}
-          {/* <Suggestions results={this.state.results} /> */}
+
+          <Suggestions results={this.state.results} />
         </>
-        {/* ); */}
-        {/* })} */}
       </form>
     );
   }

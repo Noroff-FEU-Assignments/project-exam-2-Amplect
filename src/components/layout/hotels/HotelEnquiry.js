@@ -1,6 +1,6 @@
 import Heading from "../Heading";
 import { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { API_URL } from "../../../constants/api";
 import { Form, Button } from "react-bootstrap";
 
@@ -27,7 +27,7 @@ function useLocalStorage(key, initialValue) {
       setStoredEnquiry(enquiryToStore);
       if (typeof window !== "undefined") {
         enquiryData.push(enquiryToStore);
-        localStorage.setItem("enquiry", JSON.stringify(enquiryData));
+
         window.localStorage.setItem(key, JSON.stringify(enquiryToStore));
       }
       if (localStorage.getItem("enquiry")) {
@@ -85,10 +85,10 @@ export default function HotelEnquiry() {
 
         if (response.ok) {
           const json = await response.json();
-          const details = json.data;
-          console.log(details);
 
-          setHotel(details);
+          console.log(json);
+
+          setHotel(json);
         } else {
           setError("An error occurred while fetching this hotel...");
         }
@@ -111,14 +111,16 @@ export default function HotelEnquiry() {
 
   return (
     <>
-      <Heading title={`Enquiry about ${hotel.attributes.name}`} />
+      <Heading title={`Enquiry about ${hotel.name}`} />
       <Form className="container__form">
         <Form.Control
           type="text"
-          placeholder={hotel.attributes.name}
-          value={hotel.attributes.name}
-          onChange={(e) => setHotelName(e.target.value)}
+          controlId="hotel"
+          placeholder={hotel.name}
+          value={hotelName}
+          onChange={(e) => setHotelName(`${hotel.name}`)}
         />
+
         <Form.Group
           className="mb-3"
           controlId="name"

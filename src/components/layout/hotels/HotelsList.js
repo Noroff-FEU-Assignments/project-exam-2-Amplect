@@ -7,7 +7,7 @@ function HotelsList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const url = API_URL + "?populate=image";
+  const url = API_URL;
 
   useEffect(function () {
     async function fetchData() {
@@ -16,10 +16,9 @@ function HotelsList() {
 
         if (response.ok) {
           const json = await response.json();
-          const data = json.data;
-          console.log(data);
+          console.log(json);
 
-          setHotels(data);
+          setHotels(json);
         } else {
           setError("An error occurred while fetching the hotels...");
         }
@@ -43,22 +42,20 @@ function HotelsList() {
   return (
     <div className="container__cards">
       {hotels.map(function (hotel) {
-        // const imageUrl = {hotel.attributes.image.data.attributes.url};
-        // console.log(imageUrl);
-
-        // const imageUrl = BASE_URL + {hotel.attributes.image.data.attributes.url};
+        console.log(hotel.image[0].url);
 
         return (
           <div key={hotel.id} className="card__hotel">
             <img
-              src="{BASE_URL}
-              {hotel.attributes.image.data.attributes.url}"
+              className="card__image"
+              src={hotel.image[0].url}
+              alt="Alt text"
             ></img>
-            <h2>{hotel.attributes.name}</h2>
-            <p className="hotel__price">From ${hotel.attributes.price}/night</p>
+            <h2>{hotel.name}</h2>
+            <p className="hotel__price">From ${hotel.price}/night</p>
             <div className="card__hotel--button">
               <Link to={`/hotels/${hotel.id}`}>
-                <p>Book now</p>
+                <p>More info</p>
               </Link>
             </div>
           </div>

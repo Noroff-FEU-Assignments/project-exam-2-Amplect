@@ -12,6 +12,7 @@ import Login from "./login/Login";
 import HotelDetail from "./hotels/HotelDetail";
 import HotelEnquiry from "./hotels/HotelEnquiry";
 import Admin from "./admin/Admin";
+import Add from "./admin/Add";
 import {
   Navbar,
   Nav,
@@ -28,11 +29,11 @@ function Layout() {
     <Router>
       <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             <img
               src="/images/icon-w.png"
               alt="Logo icon for Holidaze"
-              width="40px"
+              width="60px"
             ></img>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -51,7 +52,7 @@ function Layout() {
                 <Nav.Link href="#link">Log in</Nav.Link>
               </NavLink>
             </Nav>
-            <div className="d-flex">
+            <div className="d-flex nav__search">
               <Search />
             </div>
           </Navbar.Collapse>
@@ -67,6 +68,7 @@ function Layout() {
           <Route path="/hotels/:id" element={<HotelDetail />} />
           <Route path="/hotels/:id/enquiry" element={<HotelEnquiry />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/add" element={<Add />} />
         </Routes>
       </Container>
 
